@@ -1,0 +1,45 @@
+.btn-oscuro {
+    background-color: #3b3f5c;
+    color: azure !important;
+}
+
+.btn-oscuro:hover {
+    background-color: #42455a;
+    color: azure !important;
+}
+
+.btn-oscuro:active {
+    background-color: #42455a;
+    color: azure !important;
+}
+
+table thead th {
+    background-color: #3b3f5c;
+    color: azure !important;
+}
+
+.item {
+    border-radius: 20px;
+}
+
+.item:hover {
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgb(219, 219, 219) 0%, rgba(228,228,228,1) 100%);
+    cursor: pointer;
+}
+
+.item img {
+    filter: brightness(1.05);
+    mix-blend-mode: multiply;
+}
+
+
+.gris{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    cursor: pointer;
+}
+
+.w-35{
+    width: 33%;
+}
