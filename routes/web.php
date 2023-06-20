@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Categorias;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Productos;
 use App\Http\Livewire\Usuarios;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('dashboard', Dashboard::class)->name('dashboard');
     Route::get('usuarios', Usuarios::class)->name('usuarios');
     Route::get('categorias', Categorias::class)->name('categorias');
+    Route::get('productos', Productos::class)->name('productos');
 });
 
 Route::middleware('auth')->group(function () {

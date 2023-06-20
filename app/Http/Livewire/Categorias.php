@@ -25,7 +25,7 @@ class Categorias extends Component
     public function render()
     {
         $categorias = Categoria::where('nombre', 'LIKE', '%' . $this->search . '%')
-                        ->paginate($this->paginate);
+            ->paginate($this->paginate);
 
         return view('livewire.categorias', compact('categorias'))
             ->extends('layouts.theme.app', ['title' => 'Categorias'])
@@ -108,7 +108,7 @@ class Categorias extends Component
         $categoria->delete();
         $this->emit('show-success', 'Categorias eliminado...');
         $this->resetUI();
-}
+    }
 
     public function resetUI()
     {
