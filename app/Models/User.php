@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -52,4 +53,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->imagen
+                    ? Storage::disk('public')->url($this->imagen)
+                    : $this->defaultPhotoUrl();
+    }
+
+    protected function defaultPhotoUrl()
+    {
+        $name = trim(collect(explode(' ', $this->nombre))->map(function ($segment) {
+            return mb_substr($segment, 0, 1);
+        })->join(' '));
+        return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=7F9CF5&background=EBF4FF&size=500';
+    }
 }

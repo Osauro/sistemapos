@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Categorias;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Usuarios;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('dashboard', Dashboard::class)->name('dashboard');
     Route::get('usuarios', Usuarios::class)->name('usuarios');
+    Route::get('categorias', Categorias::class)->name('categorias');
 });
 
 Route::middleware('auth')->group(function () {
