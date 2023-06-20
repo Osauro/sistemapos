@@ -18,8 +18,10 @@
                     <table class="table table-hover mt-1">
                         <thead>
                             <th class="text-center" width="50px">#</th>
+                            <th width="100px">CATEGORIA</th>
                             <th>NOMBRE</th>
-                            <th width="100px">IMAGEN</th>
+                            <th class="text-right" width="100px">PRECIO</th>
+                            <th class="text-right" width="100px">IMAGEN</th>
                             <th width="100px" class="text-center">ACCION</th>
                         </thead>
                         <tbody>
@@ -29,11 +31,16 @@
                                         {{ str_pad($producto->id, 4, '0', STR_PAD_LEFT) }}
                                     </td>
                                     <td>
-                                        {{ $producto->nombre }}
+                                        {{ $producto->categoria }}
                                     </td>
                                     <td>
-                                        <img src="{{ $producto->photo_url }}" alt="" width="50"
-                                            height="50">
+                                        {{ $producto->nombre }}
+                                    </td>
+                                    <td class="text-right">
+                                        {{ $producto->precio }}
+                                    </td>
+                                    <td class="text-right">
+                                        <img src="{{ $producto->photo_url }}" alt="" width="50" height="50">
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-sm btn-dark p-2 mtmobile"

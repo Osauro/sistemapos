@@ -35,8 +35,19 @@ class Productos extends Component
 
     public function render()
     {
-        $productos = Producto::where('nombre', 'LIKE', '%' . $this->search . '%')
-            ->paginate($this->paginate);
+        $productos = Producto::join('categorias', function($join) {
+            $join->on('categorias.id', '=', 'productos.categoria_id');
+        })->select(
+            'productos.*',
+            'categorias.nombre as categoria'
+        )->where('productos.nombre', 'LIKE', '%' . $this->search . '%')
+        ->orWhere('productos.precio', 'LIKE', '%' . $this->search . '%')
+        ->orWhere('productos.detalle', 'LIKE', '%' . $this->search . '%')
+        ->orWhere('categorias.nombre', 'LIKE', '%' . $this->search . '%')
+        ->paginate($this->paginate);
+
+        //$productos = Producto::where('nombre', 'LIKE', '%' . $this->search . '%')
+          //  ->paginate($this->paginate);
 
         return view('livewire.productos', compact('productos'))
             ->extends('layouts.theme.app', ['title' => 'Productos'])
@@ -95,7 +106,7 @@ class Productos extends Component
     {
         $rules = [
             'categoria_id'  => ['required'],
-            'nombre'        => ['required', 'min:3', 'unique:productos,nombre,'.$this->selected_id],
+            'nombre'        => ['required', 'min:3', 'unique:productos,nombre,' . $this->selected_id],
             'precio'        => ['required']
         ];
 
@@ -146,7 +157,6 @@ class Productos extends Component
     public function resetUI()
     {
         $this->reset(
-            'search',
             'selected_id',
             'categoria_id',
             'nombre',
