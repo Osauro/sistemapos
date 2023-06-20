@@ -63,7 +63,7 @@ class Usuarios extends Component
         ]);
 
         if ($usuario) {
-            $this->emit('show-success', 'Usuario creado correctamente...');
+            $this->emit('show-success', 'Usuario creado...');
             $this->resetUI();
         }
     }
@@ -80,13 +80,49 @@ class Usuarios extends Component
 
     public function update()
     {
+        $rules = [
+            'name'      => ['required', 'min:3', 'unique:users,name,' . $this->selected_id],
+            'email'     => ['required', 'email', 'unique:users,email,' . $this->selected_id],
+            'celular'   => ['required', 'unique:users,celular,' . $this->selected_id],
+            'tipo'      => ['required']
+        ];
 
+        $messages = [
+            'name.required'     => 'El nombre de usuario es requerido.',
+            'name.min'          => 'El nombre de usuario de tener al menos 3 caracteres.',
+            'name.unique'       => 'El nombre de usuario ya esta registrado.',
+            'email.required'    => 'El correo electrónico es requerido.',
+            'email.email'       => 'El correo electrónico es incorrecto.',
+            'email.unique'      => 'El correo electrónico ya esta registrado.',
+            'celular.required'  => 'El celular es requerido.',
+            'celular.unique'    => 'El celular ya esta registrado.',
+            'tipo.required'     => 'El tipo es requerido.',
+        ];
+
+        $this->validate($rules, $messages);
+
+        $usuario = User::find($this->selected_id);
+
+        $usuario->update([
+            'name'      => $this->name,
+            'email'     => $this->email,
+            'celular'   => $this->celular,
+            'tipo'      => $this->tipo,
+            'password'  => bcrypt($this->celular)
+        ]);
+
+        if ($usuario) {
+            $this->emit('show-success', 'Usuario actualizado...');
+            $this->resetUI();
+        }
     }
 
     public function destroy(User $user)
     {
-
-    }
+        $user->delete();
+        $this->emit('show-success', 'Usuario eliminado...');
+        $this->resetUI();
+}
 
     public function resetUI()
     {
