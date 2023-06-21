@@ -22,9 +22,9 @@ class Usuarios extends Component
     public function render()
     {
         $usuarios = User::where('name', 'LIKE', '%' . $this->search . '%')
-                        ->where('celular', 'LIKE', '%' . $this->search . '%')
-                        ->where('email', 'LIKE', '%' . $this->search . '%')
-                        ->paginate($this->paginate);
+            ->where('celular', 'LIKE', '%' . $this->search . '%')
+            ->where('email', 'LIKE', '%' . $this->search . '%')
+            ->paginate($this->paginate);
 
         return view('livewire.usuarios', compact('usuarios'))
             ->extends('layouts.theme.app', ['title' => 'Usuarios'])
@@ -122,7 +122,7 @@ class Usuarios extends Component
         $user->delete();
         $this->emit('show-success', 'Usuario eliminado...');
         $this->resetUI();
-}
+    }
 
     public function resetUI()
     {
