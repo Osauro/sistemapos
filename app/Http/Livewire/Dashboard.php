@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Dashboard extends Component
@@ -10,7 +11,6 @@ class Dashboard extends Component
     public $componentName = 'Dashboard';
     private $paginate = 12;
     protected $paginationTheme = "bootstrap";
-
 
     public function render()
     {

@@ -2,6 +2,18 @@
 <div class="sidebar-wrapper sidebar-theme">
     <nav id="compactSidebar">
         <ul class="menu-categories">
+            <li class="menu {{ Request::is('pos') ? 'active' : '' }}">
+                <a href="{{ route('pos') }}" class="menu-toggle">
+                    <div class="base-menu">
+                        <div class="base-icons">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-monitor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <span>Pos</span>
+                    </div>
+                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </li>
+            @admin
             <li class="menu {{ Request::is('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" class="menu-toggle">
                     <div class="base-menu">
@@ -46,6 +58,7 @@
                 </a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </li>
+            @endadmin
             <li class="menu {{ Request::is('movimientos') ? 'active' : '' }}">
                 <a href="{{ route('movimientos') }}" class="menu-toggle">
                     <div class="base-menu">

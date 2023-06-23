@@ -12,7 +12,7 @@
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     @livewireStyles
 </head>
-<body class="dashboard-analytics {{ Auth::user()->id == 1 ? '' : 'sidebar-closed' }}">
+<body class="dashboard-analytics">
 
     <!-- BEGIN LOADER -->
     <div id="load_screen"> <div class="loader"> <div class="loader-content">

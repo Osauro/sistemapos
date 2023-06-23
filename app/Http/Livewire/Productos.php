@@ -7,6 +7,7 @@ use App\Models\Producto;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class Productos extends Component
 {
@@ -84,6 +85,7 @@ class Productos extends Component
             $this->imagen->storeAs('public/productos', $customFileName);
             $producto->imagen = 'productos/' . $customFileName;
             $producto->save();
+            Image::make('storage/' . $producto->imagen)->resize(500, 500)->save('storage/' . $producto->imagen);
         }
 
         if ($producto) {
@@ -139,6 +141,7 @@ class Productos extends Component
             $this->imagen->storeAs('public/productos', $customFileName);
             $producto->imagen = 'productos/' . $customFileName;
             $producto->save();
+            Image::make('storage/' . $producto->imagen)->resize(500, 500)->save('storage/' . $producto->imagen);
         }
 
         if ($producto) {
