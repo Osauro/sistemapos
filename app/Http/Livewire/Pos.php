@@ -51,28 +51,32 @@ class Pos extends Component
         $item = Item::where('venta_id', $this->venta->id)->where('producto_id', $producto->id)->first();
 
         if ($item) {
-            if ($producto->stock > 0) {
-                $producto->update([
-                    'stock' => $producto->stock - 1
-                ]);
-            }
-
             $cantidad = $item->cantidad + 1;
 
-            $item->update([
-                'cantidad' => $cantidad,
-                'subtotal' => $cantidad * $producto->precio
-            ]);
-        } else {
-            $item = Item::create([
-                'venta_id' => $this->venta->id,
-                'producto_id' => $producto->id,
-                'cantidad' => 1,
-                'subtotal' => $producto->precio
-            ]);
-        }
+            if ($cantidad <= $producto->stock) {
+                $item->update([
+                    'cantidad' => $cantidad,
+                    'subtotal' => $cantidad * $producto->precio
+                ]);
+                $this->emit('show-success', 'Producto agregado...');
+            } else {
+                $this->emit('show-error', 'Producto insuficiente...');
+            }
 
-        $this->emit('show-success', 'Producto agregado...');
+        } else {
+            if ($producto->stock > 0) {
+                $item = Item::create([
+                    'venta_id' => $this->venta->id,
+                    'producto_id' => $producto->id,
+                    'cantidad' => 1,
+                    'subtotal' => $producto->precio
+                ]);
+                $this->emit('show-success', 'Producto agregado...');
+            } else {
+                $this->emit('show-error', 'Producto insuficiente...');
+            }
+        }
+        $this->emit('updateCart');
     }
 
 

@@ -54,5 +54,16 @@
                 timer: 800
             })
         });
+
+        window.livewire.on('show-error', msg => {
+            $('#theModal').modal('hide');
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: msg,
+                showConfirmButton: false,
+                timer: 800
+            })
+        });
     });
 </script>

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Categorias;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Movimientos;
+use App\Http\Livewire\PagarVenta;
 use App\Http\Livewire\Pos;
 use App\Http\Livewire\Productos;
 use App\Http\Livewire\Usuarios;
@@ -35,6 +36,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('pos', Pos::class)->name('pos');
     Route::get('movimientos', Movimientos::class)->name('movimientos');
+    Route::get('pagar-venta', PagarVenta::class)->name('pagar-venta');
 });
 
 Route::middleware('auth')->group(function () {
