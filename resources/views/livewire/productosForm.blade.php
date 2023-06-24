@@ -8,7 +8,7 @@
         </span>
     @endempty
 </div>
-<div class="col-sm-6 mt-3">
+<div class="col-sm-4 mt-3">
     <label for="">Categoria:</label>
     <select class="form-control" wire:model="categoria_id">
         <option>Seleccione...</option>
@@ -22,7 +22,7 @@
         </span>
     @endempty
 </div>
-<div class="col-sm-6 mt-3">
+<div class="col-sm-4 mt-3">
     <label for="">Precio:</label>
     <input class="form-control" type="number" wire:model="precio" min="0">
     @error('precio')
@@ -31,9 +31,18 @@
         </span>
     @endempty
 </div>
+<div class="col-sm-4 mt-3">
+    <label for="">Stock:</label>
+    <input class="form-control" type="number" wire:model="stock" min="0">
+    @error('stock')
+        <span class="text-danger small er">
+            {{ $message }}
+        </span>
+    @endempty
+</div>
 <div class="col-sm-12 mt-3">
     <label for="">Detalle:</label>
-    <textarea class="form-control" cols="30" rows="10" wire:model="detalle">
+    <textarea class="form-control" cols="30" rows="3" wire:model="detalle">
 
     </textarea>
     @error('detalle')

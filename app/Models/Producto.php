@@ -15,7 +15,8 @@ class Producto extends Model
         'nombre',
         'imagen',
         'detalle',
-        'precio'
+        'precio',
+        'stock'
     ];
 
     protected $appends = [

@@ -20,8 +20,9 @@ class Productos extends Component
     public $categoria_id;
     public $nombre;
     public $imagen;
-    public $detalle = 'Hola mundo...';
+    public $detalle;
     public $precio;
+    public $stock = 0;
 
     public $categorias;
 
@@ -77,7 +78,8 @@ class Productos extends Component
             'categoria_id'  => $this->categoria_id,
             'nombre'        => $this->nombre,
             'detalle'       => $this->detalle,
-            'precio'        => $this->precio
+            'precio'        => $this->precio,
+            'stock'         => $this->stock
         ]);
 
         if ($this->imagen) {
@@ -128,7 +130,8 @@ class Productos extends Component
             'categoria_id'  => $this->categoria_id,
             'nombre'        => $this->nombre,
             'detalle'       => $this->detalle,
-            'precio'        => $this->precio
+            'precio'        => $this->precio,
+            'stock'         => $this->stock
         ]);
 
         if ($this->imagen) {
@@ -165,7 +168,8 @@ class Productos extends Component
             'nombre',
             'imagen',
             'detalle',
-            'precio'
+            'precio',
+            'stock'
         );
 
         $this->resetErrorBag();

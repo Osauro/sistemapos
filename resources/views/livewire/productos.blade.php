@@ -21,6 +21,7 @@
                             <th width="100px">CATEGORIA</th>
                             <th>NOMBRE</th>
                             <th class="text-right" width="100px">PRECIO</th>
+                            <th class="text-right" width="100px">STOCK</th>
                             <th class="text-right" width="100px">IMAGEN</th>
                             <th width="100px" class="text-center">ACCION</th>
                         </thead>
@@ -38,6 +39,9 @@
                                     </td>
                                     <td class="text-right">
                                         {{ $producto->precio }}
+                                    </td>
+                                    <td class="text-right">
+                                        {{ $producto->stock }}
                                     </td>
                                     <td class="text-right">
                                         <img src="{{ $producto->photo_url }}" alt="" width="50" height="50">

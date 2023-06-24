@@ -43,5 +43,16 @@
         window.livewire.on('show-modal', msg => {
             $('#theModal').modal('show');
         });
+
+        window.livewire.on('show-success', msg => {
+            $('#theModal').modal('hide');
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: msg,
+                showConfirmButton: false,
+                timer: 800
+            })
+        });
     });
 </script>
