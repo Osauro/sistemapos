@@ -16,4 +16,9 @@ class Venta extends Model
         'total',
         'estado'
     ];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'venta_id', 'id');
+    }
 }
