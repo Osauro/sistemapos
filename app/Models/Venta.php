@@ -21,4 +21,9 @@ class Venta extends Model
     {
         return $this->hasMany(Item::class, 'venta_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

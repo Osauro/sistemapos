@@ -59,6 +59,43 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="row mb-3">
+                    <div class="col-sm-4 mt-3">
+                        <label for="">Efectivo:</label>
+                        <input class="form-control text-right" type="number" wire:model="efectivo" min="0" id="efectivo" wire:change="nuevoEfectivo($('#efectivo').val())" wire:keydown.enter="pagar()">
+                        @error('efectivo')
+                            <span class="text-danger small er">
+                                {{ $message }}
+                            </span>
+                        @endempty
+                    </div>
+                    <div class="col-sm-4 mt-3">
+                        <label for="">Cambio:</label>
+                        <input class="form-control text-right" type="number" wire:model="cambio" min="0">
+                        @error('cambio')
+                            <span class="text-danger small er">
+                                {{ $message }}
+                            </span>
+                        @endempty
+                    </div>
+                    <div class="col-sm-4 mt-3">
+                        <label for="">Total:</label>
+                        <input class="form-control text-right" type="number" wire:model="total" min="0">
+                        @error('total')
+                            <span class="text-danger small er">
+                                {{ $message }}
+                            </span>
+                        @endempty
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-success mr-3" wire:click="pagar()">
+                        <i class="fa fa-money"></i> Pagar
+                    </button>
+                    <button class="btn btn-danger" wire:click="cancelar()">
+                        <i class="fa fa-close"></i> Cancelar
+                    </button>
+                </div>
             </div>
         </div>
     </div>

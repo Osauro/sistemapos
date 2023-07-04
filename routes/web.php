@@ -8,6 +8,7 @@ use App\Http\Livewire\PagarVenta;
 use App\Http\Livewire\Pos;
 use App\Http\Livewire\Productos;
 use App\Http\Livewire\Usuarios;
+use App\Http\Livewire\Ventas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('pos', Pos::class)->name('pos');
     Route::get('movimientos', Movimientos::class)->name('movimientos');
     Route::get('pagar-venta', PagarVenta::class)->name('pagar-venta');
+    Route::get('ventas', Ventas::class)->name('ventas');
 });
 
 Route::middleware('auth')->group(function () {
